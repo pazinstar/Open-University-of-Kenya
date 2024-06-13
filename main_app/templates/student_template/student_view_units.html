@@ -1,0 +1,102 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block page_title %}{{ page_title }}{% endblock page_title %}
+{% block custom_css %}
+<style>
+    .subject-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .subject-list li {
+        border-bottom: 1px solid #ccc;
+        padding: 10px 0;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+{% endblock custom_css %}
+
+{% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <button class="btn btn-secondary" id="unitHistoryBtn">Unit History</button>
+                      
+                        <button class="btn btn-success" id="registerUnitBtn">Current Registered Unit</button>
+                        <button class="btn btn-primary" id="registerUnitBtn">Register Unit</button>
+                   
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body" id="units_registration">
+                        {% if subjects %}
+                        <form id="registerUnitForm">
+                            <ul class="subject-list">
+                                {% for subject in subjects %}
+                                <li>
+                                    <input type="checkbox" name="subjects" value="{{ subject.id }}">
+                                    {{ subject.name }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            <button style="width: 50%; background-color: green; color: white; border-color: azure; margin: 0 auto; display: block;" type="submit">Register</button>
+                        </form>
+                        {% else %}
+                        <p>No subjects found for the student's course.</p>
+                        {% endif %}
+                    </div>
+                    <div class="card-body" id="units_history">
+                        <!-- Add content for unit history here -->
+                        <ul class="subject-list">
+                            {% for subject in subjects %}
+                            <li>
+                                <p name="subjects" value="{{ subject.id }}">
+                                {{ subject.name }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+{% endblock content %}
+
+{% block custom_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Hide the register unit section and show the unit history section by default
+        const unitsRegistration = document.getElementById('units_registration');
+        const unitsHistory = document.getElementById('units_history');
+        unitsRegistration.classList.add('hidden');
+        unitsHistory.classList.remove('hidden');
+
+        // Get references to the buttons
+        const unitHistoryBtn = document.getElementById('unitHistoryBtn');
+        const registerUnitBtn = document.getElementById('registerUnitBtn');
+
+        // Event listener for the register unit button
+        registerUnitBtn.addEventListener('click', function() {
+            unitsRegistration.classList.remove('hidden');
+            unitsHistory.classList.add('hidden');
+        });
+
+        // Event listener for the unit history button
+        unitHistoryBtn.addEventListener('click', function() {
+            unitsRegistration.classList.add('hidden');
+            unitsHistory.classList.remove('hidden');
+        });
+    });
+</script>
+{% endblock custom_js %}

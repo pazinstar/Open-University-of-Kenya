@@ -1,0 +1,91 @@
+
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+.contactForm .form-group {
+    margin-bottom: 15px; /* Add space between form groups */
+}
+
+.contactForm .form-row {
+    margin-bottom: 15px; /* Add space below the form row */
+}
+
+.contactForm .btn-success {
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    padding: 12px 24px; /* Add some padding */
+    font-size: 16px; /* Increase font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    margin-top: 15px; /* Add space above the button */
+}
+
+.contactForm .btn-success:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.contactForm .btn-success:active {
+    background-color: #1e7e34; /* Even darker green when clicked */
+}
+
+.contactForm .btn-success:focus {
+    outline: none; /* Remove outline on focus */
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5); /* Add a subtle shadow on focus */
+}
+
+
+
+</style>
+<div class="contact mt-100">
+    <div class="container">
+        <div class="section-header">
+            <h2>Contact Us</h2>
+           
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form">
+                    <form class="contactForm">
+                        <div class="form-row">
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" placeholder="Your Name" />
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <input type="email" class="form-control" placeholder="Your Email" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject" />
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="Message"></textarea>
+                        </div>
+                    
+                        <div>
+                            <button class="btn-success" type="submit">Send Message</button>
+                        </div>
+                    </form>
+                  <br>
+                </div>
+                <div class="contact mt-4">
+                    <p class="phone">Contact: 0741 423 751 | 0721 436 111</p>
+                    <p>Email: info@machakosVTC.net</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div
+                    class="mhttps://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3988.3791456152144!2d37.2587941!3d-1.5389726!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f87d780fe2e75%3A0xfa1fd2165d9a4b07!2sMachakos%20Vocational%20Training%20Center!5e0!3m2!1sen!2ske!4v1707490699221!5m2!1sen!2skeap">
+                    <iframe src="" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+  

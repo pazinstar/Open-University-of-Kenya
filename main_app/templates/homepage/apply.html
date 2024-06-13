@@ -1,0 +1,93 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Student Enrollment Form</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{% url 'submit_application' %}">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                           <div class="row">
+                            <div class="col">
+                                <label for="first_name">First Name</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" required>
+                           
+                            </div>
+                            <div class="col">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" required>
+                            </div>
+                           </div>
+                       
+
+                        </div>
+                      
+                        <div class="form-group mb-3">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" class="form-control" id="dob" name="dob" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" class="form-control" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="address">Address</label>
+                            <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="course">Course</label>
+                            <select class="form-control" id="course" name="course" required>
+                                <option value="" disabled selected>Select a course</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Business Administration">Business Administration</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                <option value="Electrical Engineering">Electrical Engineering</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="personal_statement">Personal Statement</label>
+                            <textarea class="form-control" id="personal_statement" name="personal_statement" rows="5" placeholder="Tell us why you want to join this course" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast message -->
+<div class="toast" id="successToast" style="position: absolute; top: 20px; right: 20px;" data-delay="5000">
+    <div class="toast-header">
+        <strong class="mr-auto text-primary">Success</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+    </div>
+    <div class="toast-body">
+        Your application has been submitted successfully!
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                    $('#successToast').toast('show');
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    });
+</script>
+
+{% endblock content %}

@@ -1,0 +1,135 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+     .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .schools li {
+            background: #f8f9fa;
+            margin: 10px 0;
+            padding: 15px;
+            border-left: 5px solid #ff9933;
+        }
+        .contact {
+            background-color: #003399;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .contact .phone {
+            font-weight: bold;
+        }
+</style>
+<!-- Courses Section -->
+<section class="mt-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <h2 class="text-center">Our Courses</h2>
+        </div>
+        <div class="row mt-5">
+            <div class="col-lg-4">
+                <div class="single-courses-box-border">
+                    <div class="icon">
+                        <img src="{% static 'homepage/image/courses/hospitality.png' %}" width="78px" height="60px" class="img-fluid" alt="School of Catering and Hospitality">
+                        <h3>School of Catering and Hospitality</h3>
+                        <p>Learn the art of hospitality and culinary skills to excel in the hospitality industry.</p>
+                        <div class="buttons">
+                            <a href="#" class="button3">Read More<i class="bi bi-arrow-right-circle-fill"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-courses-box-border">
+                    <div class="icon">
+                        <img src="{% static 'homepage/image/courses/engineering.png' %}" width="78px" height="60px" class="img-fluid" alt="Engineering">
+                        <h3>Engineering</h3>
+                        <p>Specializations in Masonry, Plumbing, and Electrical Installation to build a solid foundation in engineering.</p>
+                        <div class="buttons">
+                            <a href="#" class="button3">Read More<i class="bi bi-arrow-right-circle-fill"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-courses-box-border">
+                    <div class="icon">
+                        <img src="{% static 'homepage/image/courses/beauty.png' %}" width="78px" height="60px" class="img-fluid" alt="Beauty Therapy and Hair Dressing">
+                        <h3>Beauty Therapy and Hair Dressing</h3>
+                        <p>Become a professional in beauty therapy and hairdressing with our comprehensive courses.</p>
+                        <div class="buttons">
+                            <a href="#" class="button3">Read More<i class="bi bi-arrow-right-circle-fill"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-courses-box-border">
+                    <div class="icon">
+                        <img src="{% static 'homepage/image/courses/business.png' %}" width="78px" height="60px" class="img-fluid" alt="Business">
+                        <h3>Business</h3>
+                        <p>Develop essential business skills to succeed in various commercial sectors.</p>
+                        <div class="buttons">
+                            <a href="#" class="button3">Read More<i class="bi bi-arrow-right-circle-fill"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-courses-box-border">
+                    <div class="icon">
+                        <img src="{% static 'homepage/image/courses/ict.png' %}" width="78px" height="60px" class="img-fluid" alt="ICT">
+                        <h3>ICT</h3>
+                        <p>Gain proficiency in Information and Communication Technology for the modern world.</p>
+                        <div class="buttons">
+                            <a href="#" class="button3">Read More<i class="bi bi-arrow-right-circle-fill"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-courses-box-border">
+                    <div class="icon">
+                        <img src="{% static 'homepage/image/courses/social_work.png' %}" width="78px" height="60px" class="img-fluid" alt="Social Work & Community Development">
+                        <h3>Social Work & Community Development</h3>
+                        <p>Prepare for a rewarding career in social work and community development.</p>
+                        <div class="buttons">
+                            <a href="#" class="button3">Read More<i class="bi bi-arrow-right-circle-fill"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-courses-box-border">
+                    <div class="icon">
+                        <img src="{% static 'homepage/image/courses/home_care.png' %}" width="78px" height="60px" class="img-fluid" alt="Home Care Management">
+                        <h3>Home Care Management</h3>
+                        <p>Learn the essential skills for managing home care services effectively.</p>
+                        <div class="buttons">
+                            <a href="#" class="button3">Read More<i class="bi bi-arrow-right-circle-fill"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" container">
+        <ul class="schools list-group mt-4">
+            <li class="list-group-item">School of Beauty Therapy & Hair Dressing</li>
+            <li class="list-group-item">School of Engineering</li>
+            <li class="list-group-item">School of Hospitality and Catering</li>
+            <li class="list-group-item">School of Building & Construction</li>
+            <li class="list-group-item">School of ICT</li>
+            <li class="list-group-item">School of Clothing Technology</li>
+            <li class="list-group-item">School of Business Studies</li>
+            <li class="list-group-item">School of Social Work & Community Development</li>
+            <li class="list-group-item">School of Health Science</li>
+        </ul>
+    </div>
+   
+</section>
+
+{% endblock content %}

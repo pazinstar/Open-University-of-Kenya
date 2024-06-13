@@ -1,0 +1,112 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block page_title %}{{page_title}}{% endblock page_title %}
+
+{% block content %}
+<style>
+    .table-responsive {
+    margin-top: 20px;
+}
+
+.table thead {
+    background-color: #8d09ca;
+    color: #fff;
+}
+
+.table th, .table td {
+    text-align: start;
+    vertical-align: middle;
+}
+
+</style>
+<div class="container mt-5">
+    <h2 class="mb-4">List of Students Applied for Enrollment</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead >
+                <tr>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Email Address</th>
+                    <th>Course</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for enrollment in enrollments %}
+                <tr>
+                    <td>{{ enrollment.first_name }} {{ enrollment.last_name }}</td>
+                    <td>{{ enrollment.phone }}</td>
+                    <td>{{ enrollment.email }}</td>
+                    <td>{{ enrollment.course }}</td>
+                    <td> 
+                       <a href=""  data-toggle="modal" data-target="#emailModal">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-arrow-up" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4.5a.5.5 0 0 1-1 0V5.383l-7 4.2-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h5.5a.5.5 0 0 1 0 1H2a2 2 0 0 1-2-1.99zm1 7.105 4.708-2.897L1 5.383zM1 4v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1"/>
+                            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-5.354 1.25 1.25a.5.5 0 0 1-.708.708L13 12.207V14a.5.5 0 0 1-1 0v-1.717l-.28.305a.5.5 0 0 1-.737-.676l1.149-1.25a.5.5 0 0 1 .722-.016"/>
+                          </svg>
+                        send message
+                       </a>
+                    </td>
+                   
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+  <!-- The Modal -->
+  <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="emailModalLabel">Send Email</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="emailForm">
+           
+            <div class="form-group">
+              <label for="emailSubject">Subject</label>
+              <input type="text" class="form-control" id="emailSubject" placeholder="Subject" required>
+            </div>
+            <div class="form-group">
+              <label for="emailBody">Message</label>
+              <textarea class="form-control" id="emailBody" rows="3" placeholder="Your message" required></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="sendEmailButton">Send Email</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Optional JavaScript to handle form submission -->
+  <script>
+    document.getElementById('sendEmailButton').addEventListener('click', function () {
+      const recipientEmail = document.getElementById('recipientEmail').value;
+      const emailSubject = document.getElementById('emailSubject').value;
+      const emailBody = document.getElementById('emailBody').value;
+      
+      // Add your email sending logic here
+
+      console.log(`Email sent to: ${recipientEmail}`);
+      console.log(`Subject: ${emailSubject}`);
+      console.log(`Message: ${emailBody}`);
+      
+      // Close the modal
+      $('#emailModal').modal('hide');
+    });
+  </script>
+</body>
+</html>
+{% endblock content %}

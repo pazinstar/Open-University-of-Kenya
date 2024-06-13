@@ -1,0 +1,86 @@
+<!-- session_list.html -->
+
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block page_title %}{{ page_title }}{% endblock page_title %}
+{% block custom_css %}
+<style>
+    .subject-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .subject-list li {
+        border-bottom: 1px solid #ccc;
+        padding: 10px 0;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+{% endblock custom_css %}
+
+{% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <button class="btn btn-secondary" id="reportingBtn">Reporting History</button>
+                     
+                        <button class="btn btn-primary" id="reportingHistoryBtn">Report</button>
+                      
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body" id="reporting_div">
+                        <h4>report history</h4>
+                    </div>
+                    <div class="card-body hidden" id="reporting_history_div">
+                        <div class="container border">
+                            <strong class="text-warning"> Reporting disabled by admin</strong>
+                       
+                        </div>
+                        <br>
+                        <hr>
+                       <form id="sessionForm">
+                            <select id="sessionDropdown" class="form-control">
+                                <option value="">Select Session</option>
+                                {% for session in sessions %}
+                                <option value="{{ session.id }}">{{ session }}</option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var reportingBtn = document.getElementById("reportingBtn");
+        var reportingHistoryBtn = document.getElementById("reportingHistoryBtn");
+        var reportingDiv = document.getElementById("reporting_div");
+        var reportingHistoryDiv = document.getElementById("reporting_history_div");
+
+        reportingBtn.addEventListener("click", function () {
+            reportingDiv.classList.remove("hidden");
+            reportingHistoryDiv.classList.add("hidden");
+        });
+
+        reportingHistoryBtn.addEventListener("click", function () {
+            reportingDiv.classList.add("hidden");
+            reportingHistoryDiv.classList.remove("hidden");
+        });
+    });
+</script>
+
+{% endblock content %}

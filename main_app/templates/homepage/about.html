@@ -1,0 +1,68 @@
+
+
+
+
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block content %}
+ <!-- About Start-->
+ <div class="about ">
+    <div class="container">
+        <div class="section-header">
+            <h2>About Us</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac lacus eget nunc imperdiet
+            </p>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="about-img">
+                    <img  src="{% static 'homepage/image/about/about.jpg' %}"  alt="" class="img-fluid">
+                </div>
+                <div class="about-content">
+                    <h2>Welcome to Our Site</h2>
+                    <p>
+                        The Machakos Vocational Training Centre is a renowned educational institution located in
+                        Machakos, Kenya.
+                        Established with a mission to provide quality vocational training and empower individuals
+                        with practical skills, the center offers a wide range of training programs in different
+                        disciplines.
+                    </p>
+                    <a class="btn" href="#">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="about-img">
+                    <img  src="{% static 'homepage/image/about-story.jpg' %}"  alt="" class="img-fluid">
+                </div>
+                <div class="about-content">
+                    <h2>Our Story</h2>
+                    <p>
+                        Empowering individuals with practical skills and knowledge, fostering self-reliance.
+                    </p>
+                    <a class="btn" href="#">Read More</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="about-img">
+                    <img src="img/about-goal.jpg" alt="" class="img-fluid">
+                </div>
+                <div class="about-content">
+                    <h2>Our Mission</h2>
+                    <p>
+                        Workforce Development: To contribute to the development of a skilled workforce that meets
+                        the demands of the local, regional, or national economy.
+                    </p>
+                    <a class="btn" href="#">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+{% endblock content %}

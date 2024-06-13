@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Sign-in Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap">
+</head>
+<body>
+    <div class="container">
+        <div class="drop">
+            <div class="content">
+                <h2>Sign in</h2>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="inputBox">
+                        <input placeholder="Email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="inputBox">
+                        <input placeholder="Password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="inputBox">
+                        <input type="submit" value="Login">
+                    </div>
+                </form>
+                <div class="btns-container">
+                    
+                    <a href="{{ route('password.request') }}" class="btns">Forget Password</a>
+                    <a href="{{ route('register') }}" class="btns signup">Signup</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #eff0f4;
+}
+
+.container {
+    position: relative;
+    left: -80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .drop {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    box-shadow: inset 20px 20px 20px rgba(0, 0, 0, 0.05), 25px 35px 20px rgba(0, 0, 0, 0.05), 25px 30px 30px rgba(0, 0, 0, 0.05), inset -20px -20px 25px rgba(255, 255, 255, 0.9);
+    transition: 0.5s;
+   
+    justify-content: center;
+    align-items: center;
+    border-radius: 52% 48% 33% 67% / 38% 45% 55% 62%;
+    animation: dropAnimation 2s linear infinite;
+}
+
+.container .drop {
+    border-radius: 50%;
+}
+
+.container .drop::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 85px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0.9;
+    animation: dropletAnimation 2s linear infinite;
+}
+
+.container .drop::after {
+    content: '';
+    position: absolute;
+    top: 90px;
+    left: 110px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0.9;
+    animation: dropletAnimation 2s linear infinite;
+}
+
+@keyframes dropAnimation {
+    0% {
+        border-radius: 52% 48% 33% 67% / 38% 45% 55% 62%;
+    }
+    50% {
+        border-radius: 50%;
+    }
+    100% {
+        border-radius: 52% 48% 33% 67% / 38% 45% 55% 62%;
+    }
+}
+
+@keyframes dropletAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.container .drop .content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 40px;
+    gap: 15px;
+}
+
+.container .drop .content h2 {
+    position: relative;
+    color: #333;
+    font-size: 1.5em;
+}
+
+.container .drop .content form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .drop .content form .inputBox {
+    position: relative;
+    width: 225px;
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1), inset -2px -5px 10px rgba(255, 255, 255, 1), 15px 15px 10px rgba(0, 0, 0, 0.05), 15px 10px 15px rgba(0, 0, 0, 0.025);
+    border-radius: 25px;
+}
+
+.container .drop .content form .inputBox::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65%;
+    height: 5px;
+    background: #ffffff80;
+    border-radius: 5px;
+}
+
+.container .drop .content form .inputBox input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 1em;
+    padding: 10px 15px;
+}
+
+.container .drop .content form .inputBox input[type="submit"] {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1em;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+}
+
+.container .drop .content form .inputBox:last-child {
+    width: 120px;
+    background: #ff0f5b;
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1), 15px 15px 10px rgba(0, 0, 0, 0.05), 15px 10px 15px rgba(0, 0, 0, 0.025);
+    transition: 0.5s;
+}
+
+.container .drop .content form .inputBox:last-child:hover {
+    width: 150px;
+}
+
+.btns-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.btns {
+    width: 120px;
+    height: 120px;
+    background: #c61dff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    line-height: 1.2em;
+    letter-spacing: 0.1em;
+    font-size: 0.8em;
+    transition: 0.25s;
+    text-align: center;
+    box-shadow: inset 10px 10px 10px rgba(190, 1, 254, 0.05), 15px 25px 10px rgba(190, 1, 254, 0.1), 15px 20px 20px rgba(190, 1, 254, 0.1), inset -10px -10px 15px rgba(255, 255, 255, 0.5);
+    border-radius: 44% 56% 65% 35% / 57% 58% 42% 43%;
+    position: absolute;
+    right: -120px;
+}
+
+.btns::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0.45;
+}
+
+.btns.signup {
+    width: 80px;
+    height: 80px;
+    border-radius: 49% 51% 52% 48% / 63% 59% 41% 37%;
+    background: #01b4ff;
+    box-shadow: inset 10px 10px 10px rgba(1, 180, 255, 0.05), 15px 25px 10px rgba(1, 180, 255, 0.1), 15px 20px 20px rgba(1, 180, 255, 0.1), inset -10px -10px 15px rgba(255, 255, 255, 0.5);
+    bottom: 150px;
+    right: -120px;
+}
+
+.btns.signup::before {
+    left: 20px;
+    width: 15px;
+    height: 15px;
+}
+
+.btns:hover {
+    border-radius: 50%;
+}
+@media (min-width: 600px) {
+    .container .drop {
+
+    display: flex;
+}
+}
+/* Media Query for Small Devices */
+@media (max-width: 600px) {
+
+    .btns-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px; /* Add some top margin for spacing */
+}
+
+.btns {
+    width: 150px; /* Adjust button width as needed */
+    height: 100px; /* Adjust button height as needed */
+    background: #c61dff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    line-height: 1.2em;
+    letter-spacing: 0.1em;
+    font-size: 0.8em;
+    transition: 0.25s;
+    text-align: center;
+    box-shadow: inset 10px 10px 10px rgba(190, 1, 254, 0.05), 15px 25px 10px rgba(190, 1, 254, 0.1), 15px 20px 20px rgba(190, 1, 254, 0.1), inset -10px -10px 15px rgba(255, 255, 255, 0.5);
+    border-radius: 44% 56% 65% 35% / 57% 58% 42% 43%;
+    text-align: center;
+}
+
+ 
+
+    .btns {
+        position: static;
+        margin: 10px 0;
+    }
+
+    .btns.signup {
+        position: static;
+    }
+    
+.container {
+    position: relative;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+ 
+    min-height: 0vh;
+  
+}
+
+
+.container .drop {
+    position: absolute; /* Changed from relative to absolute */
+    top: 40px; /* Align to the top of the page */
+    left: 50%; /* Align horizontally to the center */
+    transform: translateX(-50%); /* Center horizontally */
+    width: 300px;
+    height: 420px;
+    box-shadow: inset 20px 20px 20px rgba(0, 0, 0, 0.05), 25px 35px 20px rgba(0, 0, 0, 0.05), 25px 30px 30px rgba(0, 0, 0, 0.05), inset -20px -20px 25px rgba(255, 255, 255, 0.9);
+    transition: 0.5s;
+  
+    border-radius: 52% 48% 33% 67% / 38% 45% 55% 62%;
+    animation: dropAnimation 2s linear infinite;
+    width: 340px;
+    height: 440px;
+  
+    justify-content: center;
+    align-items: center;
+    border-radius: 52% 48% 33% 67% / 38% 45% 55% 62%;
+    animation: dropAnimation 2s linear infinite;
+}
+
+}
+
+</style>
